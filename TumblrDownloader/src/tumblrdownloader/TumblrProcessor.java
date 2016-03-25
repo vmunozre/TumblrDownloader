@@ -24,11 +24,11 @@ import org.jsoup.select.Elements;
 public class TumblrProcessor {
     //CONSTANTES
 
-    private int NUMHILOSCARGAR = 10;
+    private final int NUMHILOSCARGAR = 10;
 
-    private String folderPath; // Ruta donde se guardaran las imagenes
-    private int nDown; // Numero de hilos que se crean
-    private int maxDown; // Numero máximo de hilos permitidos que funcionen a la vez.
+    private final String folderPath; // Ruta donde se guardaran las imagenes
+    private final int nDown; // Numero de hilos que se crean
+    private final int maxDown; // Numero máximo de hilos permitidos que funcionen a la vez.
     //Variables generales
     private ArrayList<String> arrayImagenes;
     private int contadorDescargas;
