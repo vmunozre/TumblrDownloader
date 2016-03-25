@@ -11,7 +11,7 @@ Este software esta bajo licencia [GPL_2](https://www.gnu.org/licenses/old-licens
 Puedes descargarlo [aqui](https://github.com/vmunozre/TumblrDownloader/blob/master/TumblrDownloader.jar?raw=true)
 
 Ejecute el archivo "TumblrDownloader.jar" desde consola (o usando el lanzador "ejecutar.bat") mediante el comando *java -jar TumblrDownloader.jar*.
-Introduzca el enlace del tumblr: http://fantasticpapersong.tumblr.com/ (Importante el "http://").
+Introduzca el enlace del tumblr, ejemplo: http://fantasticpapersong.tumblr.com/ (**Importante el "http://"**).
 
 ##Futuras versiones
 Funcionalidades y retoques que se iran añadiendo en futuras versiones:
