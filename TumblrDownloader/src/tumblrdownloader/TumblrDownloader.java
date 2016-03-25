@@ -11,7 +11,7 @@ public class TumblrDownloader {
 
     public static void main(String[] args) {
         //Ejemplo enlace sencillo: http://pruebasphp.victorreiner.com/pruebas/pruebaarticulos.html
-        //ejemplo tumblr: http://fantasticpapersong.tumblr.com/
+        //ejemplo tumblr : http://fantasticpapersong.tumblr.com/
         System.out.println("Introduzca la URL del tumblr: ");
         System.out.println("*Ejemplo: http://fantasticpapersong.tumblr.com/*");
         Scanner in = new Scanner(System.in);
