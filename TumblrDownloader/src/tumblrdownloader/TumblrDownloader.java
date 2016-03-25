@@ -1,21 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tumblrdownloader;
+
+import java.util.Scanner;
 
 /**
  *
- * @author Reiner
+ * @author Victor_Reiner
  */
 public class TumblrDownloader {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //Ejemplo enlace sencillo: http://pruebasphp.victorreiner.com/pruebas/pruebaarticulos.html
+        //ejemplo tumblr: http://fantasticpapersong.tumblr.com/
+        System.out.println("Introduzca la URL del tumblr: ");
+        System.out.println("*Ejemplo: http://fantasticpapersong.tumblr.com/*");
+        Scanner in = new Scanner(System.in);
+        String enlace = in.next();
+        String directorio = enlace.substring(7,enlace.indexOf("."));
+
+        TumblrProcessor tumblr = new TumblrProcessor(("./" + directorio), 10, 5);
+
+        System.out.println("Procediendo a decargar imagenes:");
+        tumblr.process(enlace);
     }
-    
+
 }
