@@ -70,8 +70,10 @@ public class TumblrProcessor {
                         try {
                             hiloCargarImagenes(enlace);
                         } catch (Exception e) {
-                            System.out.println("Error en el Hilo: " + e.getMessage());
-                            e.printStackTrace();
+                            
+                            System.out.println("Error en el Hilo: " + e.getMessage() + e.getLocalizedMessage());
+                            //Libera para que terminen los hilos
+                            sSincroCargar.release();
                         }
                     }
                 }, "HiloDescargas" + i);
@@ -114,7 +116,7 @@ public class TumblrProcessor {
                             hiloDescargas();
                         } catch (Exception e) {
                             System.out.println("Error en el Hilo: " + e.getMessage());
-                            e.printStackTrace();
+                            
                         }
                     }
                 }, "HiloDescargas" + i);
@@ -128,7 +130,7 @@ public class TumblrProcessor {
                         hiloCheckeo();
                     } catch (Exception e) {
                         System.out.println("Error en el Hilo: " + e.getMessage());
-                        e.printStackTrace();
+                        
                     }
                 }
             }, "HiloCheckeo");
@@ -173,13 +175,8 @@ public class TumblrProcessor {
 
     // INICIO THREADS
     private void hiloCargarImagenes(String enlace) throws Exception {
-        String url;
-        if (enlace.charAt(enlace.length() - 1) == '/') {
-            url = (enlace + "page/");
-        } else {
-            url = (enlace + "/page/");
-        }
-        int auxNumPagina = 0;
+        String url = (enlace + "page/");
+        int auxNumPagina;
         //PRIMER ACCESO SECCION CRITICA
         this.sPaginas.acquire();
         while (!this.esUltima) {
@@ -203,15 +200,10 @@ public class TumblrProcessor {
                     Elements img = el.getElementsByTag("img");
                     for (Element e : img) {
                         String src = e.absUrl("src");
-                        //System.out.println("Image Found!");
-                        //System.out.println("src attribute is : "+src);
-
                         //SECCION CRITICA ADD ARRAY
-                        //this.sAddArray.acquire();
-                        //if(!arrayImagenes.contains(src)){
+                        
                         this.arrayImagenes.add(src);
-                        //}
-                        //this.sAddArray.release();
+                        
                         //FIN SECCION CRITICA ADD ARRAY
 
                     }
